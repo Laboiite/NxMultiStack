@@ -2,7 +2,7 @@
 Nx monorepository with different stacks
 Integrated monorepository. Created with the "ts" preset.
 
-# Frameworks used withing this monorepository
+# Frameworks used within this monorepository
 Angular
 
 # Github actions
