@@ -14,7 +14,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nxmultistack/angular-app-a/home": [
+        "libs/angular-app-a/home/src/index.ts"
+      ],
+      "@nxmultistack/angular-app-a/shell": [
+        "libs/angular-app-a/shell/src/index.ts"
+      ],
+      "@nxmultistack/portal/shell": ["libs/portal/shell/src/index.ts"],
+      "@nxmultistack/react-app-a/shell": ["libs/react-app-a/shell/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
