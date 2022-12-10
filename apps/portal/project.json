@@ -1,25 +1,22 @@
 {
-  "name": "angular-app-a",
+  "name": "portal",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/angular-app-a/src",
-  "prefix": "nxmultistack",
+  "sourceRoot": "apps/portal/src",
+  "prefix": "portal",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/angular-app-a",
-        "index": "apps/angular-app-a/src/index.html",
-        "main": "apps/angular-app-a/src/main.ts",
+        "outputPath": "dist/apps/portal",
+        "index": "apps/portal/src/index.html",
+        "main": "apps/portal/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/angular-app-a/tsconfig.app.json",
+        "tsConfig": "apps/portal/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/angular-app-a/src/favicon.ico",
-          "apps/angular-app-a/src/assets"
-        ],
-        "styles": ["apps/angular-app-a/src/styles.scss"],
+        "assets": ["apps/portal/src/favicon.ico", "apps/portal/src/assets"],
+        "styles": ["apps/portal/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -53,10 +50,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "angular-app-a:build:production"
+          "browserTarget": "portal:build:production"
         },
         "development": {
-          "browserTarget": "angular-app-a:build:development"
+          "browserTarget": "portal:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -64,26 +61,24 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "angular-app-a:build"
+        "browserTarget": "portal:build"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/angular-app-a/**/*.ts",
-          "apps/angular-app-a/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/portal/**/*.ts", "apps/portal/**/*.html"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/angular-app-a/jest.config.ts",
+        "jestConfig": "apps/portal/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": ["scope:angular-app-a", "type:app"]
+  "tags": ["scope:portal", "type:app"]
 }
