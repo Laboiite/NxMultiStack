@@ -4,6 +4,7 @@ Integrated monorepository. Created with the "ts" preset.
 
 # Frameworks used within this monorepository
 Angular
+React
 
 # Github actions
 This repository will also be used to discover Github actions and implement a good CD making the best usage of Nx features.
