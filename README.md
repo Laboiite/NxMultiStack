@@ -19,4 +19,4 @@ Guidelines and principles from [MinimumCD](https://minimumcd.org/minimumcd/)
 This repository will also be used to discover Github actions and implement a good CD making the best usage of Nx features.
 
 # Current Graph
-![Graph](https://ibb.co/gWvGZQL)
+![Graph](https://i.ibb.co/ZgH3zvp/Capture-d-e-cran-2022-12-11-a-18-38-25.png)
