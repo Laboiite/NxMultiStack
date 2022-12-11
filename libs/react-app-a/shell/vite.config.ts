@@ -38,6 +38,9 @@ export default defineConfig({
   },
 
   test: {
+    coverage: {
+      reportsDirectory: "../../../coverage/libs/react-app-a/shell"
+    },
     globals: true,
     cache: {
       dir: '../../../node_modules/.vitest',
