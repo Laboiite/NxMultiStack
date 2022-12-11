@@ -17,3 +17,6 @@ Guidelines and principles from [MinimumCD](https://minimumcd.org/minimumcd/)
 
 # Github actions
 This repository will also be used to discover Github actions and implement a good CD making the best usage of Nx features.
+
+# Current Graph
+![Graph](https://ibb.co/gWvGZQL)
