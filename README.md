@@ -1,3 +1,8 @@
+# Badges ?
+
+![Main Pipeline Status](https://github.com/github/docs/actions/workflows/InitialWorkflow.yml/badge.svg?branch=main)
+[Contribution guidelines for this project](./CONTRIBUTING.md)
+
 # NxMultiStack
 Nx monorepository with different stacks
 Integrated monorepository. Created with the "ts" preset.
