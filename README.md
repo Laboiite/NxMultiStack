@@ -1,6 +1,6 @@
 # Badges ?
 
-![Main Pipeline Status](https://github.com/github/docs/actions/workflows/InitialWorkflow.yml/badge.svg?branch=main)
+![Main Pipeline Status](https://github.com/Laboiite/NxMultiStack/actions/workflows/InitialWorkflow.yml/badge.svg?branch=main)
 [Contribution guidelines for this project](./CONTRIBUTING.md)
 
 # NxMultiStack
