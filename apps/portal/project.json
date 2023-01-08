@@ -7,16 +7,26 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/portal",
         "index": "apps/portal/src/index.html",
         "main": "apps/portal/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/portal/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/portal/src/favicon.ico", "apps/portal/src/assets"],
-        "styles": ["apps/portal/src/styles.scss"],
+        "assets": [
+          "apps/portal/src/favicon.ico",
+          "apps/portal/src/assets"
+        ],
+        "styles": [
+          "@angular/material/prebuilt-themes/deeppurple-amber.css",
+          "apps/portal/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -66,19 +76,29 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/portal/**/*.ts", "apps/portal/**/*.html"]
+        "lintFilePatterns": [
+          "apps/portal/**/*.ts",
+          "apps/portal/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/portal/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": ["scope:portal", "type:app"]
+  "tags": [
+    "scope:portal",
+    "type:app"
+  ]
 }

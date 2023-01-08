@@ -3,18 +3,27 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/react-app-a/shell/src",
   "projectType": "library",
-  "tags": ["scope:react-app-a","type:feature"],
+  "tags": [
+    "scope:react-app-a",
+    "type:feature"
+  ],
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/react-app-a/shell/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "libs/react-app-a/shell/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     },
     "build": {
       "executor": "@nrwl/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/libs/react-app-a/shell"
@@ -26,7 +35,9 @@
     },
     "test": {
       "executor": "@nrwl/vite:test",
-      "outputs": ["{projectRoot}/coverage"],
+      "outputs": [
+        "{projectRoot}/coverage"
+      ],
       "options": {
         "passWithNoTests": true
       }
