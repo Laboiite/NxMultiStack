@@ -15,7 +15,6 @@ export default defineConfig({
     react(),
     tsconfigPaths({
       root: '../../../',
-      projects: ['tsconfig.base.json'],
     }),
   ],
 
@@ -39,7 +38,7 @@ export default defineConfig({
 
   test: {
     coverage: {
-      reportsDirectory: "../../../coverage/libs/react-app-a/shell"
+      reportsDirectory: '../../../coverage/libs/react-app-a/shell',
     },
     globals: true,
     cache: {

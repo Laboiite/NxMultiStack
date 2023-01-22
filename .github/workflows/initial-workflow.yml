@@ -1,90 +1,90 @@
-# # This is a basic workflow to help you get started with Actions
+# This is a basic workflow to help you get started with Actions
 
-# name: InitialWorkflow
+name: InitialWorkflow
 
-# # Controls when the workflow will run
-# on:
-#   # Triggers the workflow on push or pull request events but only for the "main" branch
-#   push:
-#     branches: [ "main" ]
-#   pull_request:
-#     branches: [ "main" ]
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-#   # Allows you to run this workflow manually from the Actions tab
-#   workflow_dispatch:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
-# # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-# jobs:
-#   # Defining different jobs: quality / build / deploy ...
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # Defining different jobs: quality / build / deploy ...
 
-#   # Quality job
-#   dependencies:
-#     # The type of runner that the job will run on
-#     runs-on: ubuntu-latest
+  # Quality job
+  dependencies:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
 
-#     # Steps represent a sequence of tasks that will be executed as part of the job
-#     steps:
-#       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#       - uses: actions/checkout@v3
-#       - name: Setup Node
-#         uses: actions/setup-node@v3
-#         with:
-#           cache: 'npm'
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: 'npm'
 
-#       - name: Cache Node Modules
-#         id: node-cache
-#         uses: actions/cache@v3
-#         with:
-#             path: node_modules
-#             key: node-modules-${{ hashFiles('package-lock.json') }}
+      - name: Cache Node Modules
+        id: node-cache
+        uses: actions/cache@v3
+        with:
+            path: node_modules
+            key: node-modules-${{ hashFiles('package-lock.json') }}
 
-#       - name: Install Dependencies
-#         if: steps.node-cache.outputs.cache-hit != 'true'
-#         run: npm install
+      - name: Install Dependencies
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm install
       
 
-#   # Quality job
-#   quality:
-#     needs: dependencies
-#     # The type of runner that the job will run on
-#     runs-on: ubuntu-latest
+  # Quality job
+  quality:
+    needs: dependencies
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
 
-#     # Steps represent a sequence of tasks that will be executed as part of the job
-#     steps:
-#       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#       - uses: actions/checkout@v3
-#       - uses: actions/cache@v3
-#         with:
-#           path: node_modules
-#           key: node-modules-${{ hashFiles('package-lock.json') }}
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
 
-#       # Nx workspace-lint
-#       - name: Running workspace-lint
-#         run: npx nx workspace-lint
-#       # Nx lint
-#       - name: Running linter
-#         run: npx nx run-many --target=lint --all
-#       # Nx test
-#       - name: Running all tests
-#         run: npx nx run-many --target=test --all
+      # Nx workspace-lint
+      - name: Running workspace-lint
+        run: npx nx workspace-lint
+      # Nx lint
+      - name: Running linter
+        run: npx nx run-many --target=lint --all
+      # Nx test
+      - name: Running all tests
+        run: npx nx run-many --target=test --all
 
-#   # Build job
-#   build:
-#     needs: quality
-#     # The type of runner that the job will run on
-#     runs-on: ubuntu-latest
+  # Build job
+  build:
+    needs: quality
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
 
-#     # Steps represent a sequence of tasks that will be executed as part of the job
-#     steps:
-#       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#       - uses: actions/checkout@v3
-#       - uses: actions/cache@v3
-#         with:
-#           path: node_modules
-#           key: node-modules-${{ hashFiles('package-lock.json') }}
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
 
-#       # Nx build
-#       - name: Running build
-#         run: npx nx build
+      # Nx build
+      - name: Running build
+        run: npx nx build
 
 
