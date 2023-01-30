@@ -1,4 +1,4 @@
-name: dte
+name: generated-dte-workflow
 
 on:
   push:
@@ -12,8 +12,6 @@ jobs:
     uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.11.2
     with:
       number-of-agents: 3
-      install-commands: |
-        npm install
       init-commands: |
         npx nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
       parallel-commands: |
