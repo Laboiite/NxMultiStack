@@ -13,6 +13,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  NX_CLOUD_DISTRIBUTED_EXECUTION: true
+  NX_BASE: 'main'
+
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # Defining different jobs: quality / build / deploy ...
@@ -42,6 +47,8 @@ jobs:
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm install
   main:
+    needs: dependencies
+    runs-on: ubuntu-latest
     name: Nx Cloud - Main Job
     steps:
       - uses: actions/checkout@v3
@@ -49,24 +56,47 @@ jobs:
         with:
           path: node_modules
           key: node-modules-${{ hashFiles('package-lock.json') }}
-      - uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.11.2
-        with:
-          number-of-agents: 3
-          init-commands: |
-            npx nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
-          parallel-commands: |
-            npx nx-cloud record -- npx nx workspace-lint
-            npx nx-cloud record -- npx nx format:check
-          parallel-commands-on-agents: |
-            npx nx affected --target=lint --parallel=3
-            npx nx affected --target=test --parallel=3 --ci --code-coverage
-            npx nx affected --target=build --parallel=3
+      - name: 'Initialize the Nx Cloud distributed CI run'
+        run: npx nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
 
   agents:
+    needs: main
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
     name: Nx Cloud - Agents
-    uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.11.2
-    with:
-      number-of-agents: 3    
+    strategy:
+      matrix:
+        agent: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+      - name: 'Start agent ${{ matrix.agent }}'
+        run: | 
+          npx nx-cloud start-agent
+  commands:
+    needs: main
+    runs-on: ubuntu-latest
+    name: Commands to be triggered
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+      - name: 'Workspace lint'
+        run: npx nx-cloud record -- npx nx workspace-lint
+      # - name: 'check'
+      #   run: npx nx-cloud record -- npx nx format:check
+      - name: 'Lint all'
+        run: npx nx run-many --target=lint --all --parallel=3
+      - name: 'Test all'
+        run: npx nx run-many --target=test --all --parallel=3 --ci --code-coverage
+      - name: 'Build all'
+        run: npx nx run-many --target=build --all --parallel=3
+
 
   # Quality job
   # quality:
