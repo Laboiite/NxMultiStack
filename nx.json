@@ -15,6 +15,9 @@
       }
     }
   },
+  "affected": {
+    "defaultBase": "origin/main"
+  },
   "targetDefaults": {
     "build": {
       "dependsOn": [
