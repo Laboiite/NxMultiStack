@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: InitialWorkflow
+name: DTE Workflow
 
 # Controls when the workflow will run
 on:
@@ -88,8 +88,8 @@ jobs:
           key: node-modules-${{ hashFiles('package-lock.json') }}
       - name: 'Workspace lint'
         run: npx nx-cloud record -- npx nx workspace-lint
-      # - name: 'check'
-      #   run: npx nx-cloud record -- npx nx format:check
+      - name: 'check'
+        run: npx nx-cloud record -- npx nx format:check
       - name: 'Lint all'
         run: npx nx run-many --target=lint --all --parallel=3
       - name: 'Test all'
@@ -97,50 +97,5 @@ jobs:
       - name: 'Build all'
         run: npx nx run-many --target=build --all --parallel=3
 
-
-  # Quality job
-  # quality:
-  #   needs: dependencies
-  #   # The type of runner that the job will run on
-  #   runs-on: ubuntu-latest
-
-  #   # Steps represent a sequence of tasks that will be executed as part of the job
-  #   steps:
-  #     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-  #     - uses: actions/checkout@v3
-  #     - uses: actions/cache@v3
-  #       with:
-  #         path: node_modules
-  #         key: node-modules-${{ hashFiles('package-lock.json') }}
-
-
-      # Nx workspace-lint
-  #     - name: Running workspace-lint
-  #       run: npx nx workspace-lint
-  #     # Nx lint
-  #     - name: Running linter
-  #       run: npx nx run-many --target=lint --all
-  #     # Nx test
-  #     - name: Running all tests
-  #       run: npx nx run-many --target=test --all
-
-  # # Build job
-  # build:
-  #   needs: quality
-  #   # The type of runner that the job will run on
-  #   runs-on: ubuntu-latest
-
-  #   # Steps represent a sequence of tasks that will be executed as part of the job
-  #   steps:
-  #     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-  #     - uses: actions/checkout@v3
-  #     - uses: actions/cache@v3
-  #       with:
-  #         path: node_modules
-  #         key: node-modules-${{ hashFiles('package-lock.json') }}
-
-  #     # Nx build
-  #     - name: Running build
-  #       run: npx nx build
 
 
