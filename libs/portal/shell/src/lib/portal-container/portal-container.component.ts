@@ -9,16 +9,16 @@ export class PortalContainerComponent {
   // Model for app to be defined in the next iteration
   public apps: any[] = [
     {
-      title: "First app title",
-      subtitle: "First app subtitle"
+      title: 'First app title',
+      subtitle: 'First app subtitle',
     },
     {
-      title: "Second app title",
-      subtitle: "Second app subtitle"
+      title: 'Second app title',
+      subtitle: 'Second app subtitle',
     },
     {
-      title: "Third app title",
-      subtitle: "Third app subtitle"
+      title: 'Third app title',
+      subtitle: 'Third app subtitle',
     },
-  ]
+  ];
 }

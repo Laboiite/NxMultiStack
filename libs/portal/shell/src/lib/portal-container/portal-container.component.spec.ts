@@ -10,7 +10,7 @@ describe('PortalContainerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PortalContainerComponent],
-      imports: [ MaterialDependenciesModule ]
+      imports: [MaterialDependenciesModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PortalContainerComponent);
