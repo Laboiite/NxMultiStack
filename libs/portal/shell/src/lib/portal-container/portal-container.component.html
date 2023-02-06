@@ -1,28 +1,34 @@
 <h2>Portail container</h2>
-<h3>Will contain dynamic cards reflecting other apps to be accessible within monorepo</h3>
+<h3>
+  Will contain dynamic cards reflecting other apps to be accessible within
+  monorepo
+</h3>
 <div class="apps-cards-container">
-    <ng-container *ngFor="let app of apps">
-        <mat-card class="app-card">
-            <mat-card-header>
-              <mat-card-title>{{app.title}}</mat-card-title>
-              <mat-card-subtitle>{{app.subtitle}}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu quam non nibh sagittis aliquet non in justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rhoncus tellus vitae nisl auctor bibendum. Aliquam placerat finibus dolor, ut hendrerit velit. Praesent vitae orci sollicitudin, luctus purus consectetur, sagittis tellus. Sed mattis posuere tortor. Fusce cursus ante purus, eu pretium leo cursus eu.
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-raised-button color="primary">
-                <mat-icon>
-                    favorite
-                </mat-icon>Primary</button>
-              <button mat-raised-button color="accent">Accent</button>
-              <button mat-raised-button color="warn">Warn</button>
-            </mat-card-actions>
-        </mat-card>
-    </ng-container>
+  <ng-container *ngFor="let app of apps">
+    <mat-card class="app-card">
+      <mat-card-header>
+        <mat-card-title>{{ app.title }}</mat-card-title>
+        <mat-card-subtitle>{{ app.subtitle }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu quam
+          non nibh sagittis aliquet non in justo. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Vivamus rhoncus tellus vitae nisl auctor
+          bibendum. Aliquam placerat finibus dolor, ut hendrerit velit. Praesent
+          vitae orci sollicitudin, luctus purus consectetur, sagittis tellus.
+          Sed mattis posuere tortor. Fusce cursus ante purus, eu pretium leo
+          cursus eu.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">
+          <mat-icon> favorite </mat-icon>Primary
+        </button>
+        <button mat-raised-button color="accent">Accent</button>
+        <button mat-raised-button color="warn">Warn</button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
 </div>
-<div>
-  Random change just to test Nx DTE caching gain
-</div>
+<div>Random change just to test Nx DTE caching gain</div>

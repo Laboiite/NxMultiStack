@@ -6,9 +6,9 @@ name: DTE Workflow
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -16,7 +16,6 @@ on:
 env:
   NX_CLOUD_DISTRIBUTED_EXECUTION: true
   NX_BASE: 'main'
-
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -40,8 +39,8 @@ jobs:
         id: node-cache
         uses: actions/cache@v3
         with:
-            path: node_modules
-            key: node-modules-${{ hashFiles('package-lock.json') }}
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
 
       - name: Install Dependencies
         if: steps.node-cache.outputs.cache-hit != 'true'
@@ -74,7 +73,7 @@ jobs:
           path: node_modules
           key: node-modules-${{ hashFiles('package-lock.json') }}
       - name: 'Start agent ${{ matrix.agent }}'
-        run: | 
+        run: |
           npx nx-cloud start-agent
   commands:
     needs: main
@@ -96,6 +95,3 @@ jobs:
         run: npx nx run-many --target=test --all --parallel=3 --ci --code-coverage
       - name: 'Build all'
         run: npx nx run-many --target=build --all --parallel=3
-
-
-
