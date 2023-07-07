@@ -1,5 +1,3 @@
-![Main Pipeline Status](https://github.com/Laboiite/NxMultiStack/actions/workflows/initial-workflow.yml/badge.svg?branch=main)
-
 # NxMultiStack
 
 Nx monorepository with different stacks
@@ -20,6 +18,6 @@ Guidelines and principles from [MinimumCD](https://minimumcd.org/minimumcd/)
 
 This repository will also be used to discover Github actions and implement a good CD making the best usage of Nx features.
 
-# Current Graph
+# Current Status
 
-![Graph](https://i.ibb.co/ZgH3zvp/Capture-d-e-cran-2022-12-11-a-18-38-25.png)
+Won't be continued for a while, as my current focus is more towards Module Federation and discover how to benefit from DTE, kind of work which will probably be shared on another repository.
